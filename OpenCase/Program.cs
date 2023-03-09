@@ -121,6 +121,7 @@ public class OpenCase
 
     void Write_Menu()
     {
+        Console.WriteLine($"OpenCase by AlTaberOwO https://github.com/AlTaber");
         Console.WriteLine($"---------- Статистика ----------");
         foreach (KeyValuePair<string, int> pair in stat)
         {
