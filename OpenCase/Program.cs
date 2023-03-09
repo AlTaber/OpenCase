@@ -121,23 +121,41 @@ public class OpenCase
 
     void Write_Menu()
     {
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine($"OpenCase by AlTaberOwO https://github.com/AlTaber");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine($"---------- Статистика ----------");
+        Console.ResetColor();
+
         foreach (KeyValuePair<string, int> pair in stat)
         {
-            Console.WriteLine($"{pair.Key} {pair.Value}");
+            Console.Write($"{pair.Key} ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"{pair.Value}");
+            Console.ResetColor();
         }
+
+        Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine($"---------- Последний Дроп ----------");
+        Console.ResetColor();
+
         Change_Color(last_drop);
         Console.WriteLine($"Редкость: {last_drop.type}\n" +
             $"Износ: {last_drop.wear}\n" +
             $"Флот: {last_drop.skin_float}\n" +
             $"Stat Track: {last_drop.stat_track}");
         Console.ResetColor();
-        Console.WriteLine($"---------- Действия ----------\n" +
-            $"Enter - открыть кейс\n" +
+
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine($"---------- Действия ----------");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"Enter - открыть кейс\n" +
             $"\"fast\" + Enter - открыть фастом\n" +
             $"\"reset\" + Enter - сбросить статистику");
+        Console.ResetColor();
+
         Console.Write("Действие: ");
     }
 
@@ -212,8 +230,15 @@ public class OpenCase
         for (int i = 0; i < to_skip; i++)
         {
             Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"OpenCase by AlTaberOwO https://github.com/AlTaber");
+            Console.ResetColor();
+
+            Change_Color(board[6]);
             Console.WriteLine($"           \\||/");
             Write_Board();
+            Change_Color(board[6]);
             Console.WriteLine($"           /||\\    осталось {to_skip - i - 1}");
             Thread.Sleep(speed);
             speed += (int)Math.Round(Math.Pow(1.145, i));
